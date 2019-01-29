@@ -14,3 +14,7 @@ RUN mkdir -p ${ANDROID_HOME} && \
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
 RUN yes | sdkmanager --licenses
+RUN mkdir -p /root/.android
+RUN touch /root/.android/repositories.cfg
+RUN sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.3"
+RUN sdkmanager --update
